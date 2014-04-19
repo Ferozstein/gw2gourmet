@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'gw2'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 
