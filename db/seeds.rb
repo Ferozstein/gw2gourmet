@@ -11,5 +11,6 @@ items = GW2::Item.all
 
 items["items"].foreach do |i|
 	a = GW2::Item.details(i)
-
-	ItemString.create(contents: YAML::dump(a))
+	item = ItemString.new(contents: YAML::dump(a), item_id: i)
+	item.save
+end
