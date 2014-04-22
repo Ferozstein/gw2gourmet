@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'gw2'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
+gem 'database_cleaner'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

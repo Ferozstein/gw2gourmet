@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipe_id: 1
+  type: 
+  output_item_id: 1
+  output_item_count: 1
+  min_rating: 1
+  time_to_craft_ms: 1
+  disciplines: MyString
+  flags: MyString
+  ingredients: MyString
+
+two:
+  recipe_id: 1
+  type: 
+  output_item_id: 1
+  output_item_count: 1
+  min_rating: 1
+  time_to_craft_ms: 1
+  disciplines: MyString
+  flags: MyString
+  ingredients: MyString
