@@ -70,9 +70,9 @@ przedmioty = Timeout::timeout(30) {
  		a = gw2.item_details(i)
  		item = ItemString.new(
  			item_id: i,
- 			contents: a
+ 			contents: YAML::dump(JSON.parse(a))
 		)
- 		recipe.save
+ 		item.save
  		counter += 1
  		puts "#{counter} items added"
  	end
