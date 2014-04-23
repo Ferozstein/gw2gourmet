@@ -13,7 +13,7 @@ require 'yaml'
 require 'json'
 require 'timeout'
 
-counter = 0
+counter = 16912
 
 # begin
 # przepisy = Timeout::timeout(30) {
@@ -61,9 +61,7 @@ przedmioty = Timeout::timeout(30) {
 
  	p = JSON.parse(gw2.items)
 	
- 	counter.times do
- 		p["items"].delete(p["items"].first)
- 	end
+	p["items"] = p["items"] - p["items"].first(counter)
 
  	p["items"].each do |i|
  		gw2 = Gw2Api.new
@@ -77,7 +75,7 @@ przedmioty = Timeout::timeout(30) {
  		puts "#{counter} items added"
  	end
 }
-rescue Timeout::Error, Errno::ETIMEDOUT
+rescue Timeout::Error, Errno::ETIMEDOUT#, ActiveRecord::ActiveRecordError, NoMethodError, StandardError, Exception
  	puts "Operation timed out, retrying..."
  	retry
 end
