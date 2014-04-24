@@ -11,13 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422120531) do
+ActiveRecord::Schema.define(version: 20140424161157) do
 
   create_table "item_strings", force: true do |t|
     t.string   "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "item_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "item_type"
+    t.integer  "level"
+    t.string   "rarity"
+    t.integer  "vendor_value"
+    t.string   "icon_file_id"
+    t.string   "icon_file_signature"
+    t.string   "default_skin"
+    t.text     "game_types"
+    t.text     "flags"
+    t.text     "restrictions"
+    t.text     "type_elements"
+    t.text     "crafting"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "recipes", force: true do |t|

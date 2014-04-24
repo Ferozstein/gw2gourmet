@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  name: 
+  description: MyText
+  item_type: MyString
+  level: 1
+  rarity: MyString
+  vendor_value: 1
+  icon_file_id: MyString
+  string: MyString
+  icon_file_signature: MyString
+  default_skin: MyString
+  game_types: MyText
+  flags: MyText
+  restrictions: MyText
+  type_elements: MyText
+  crafting: MyText
+
+two:
+  item_id: 
+  name: 
+  description: MyText
+  item_type: MyString
+  level: 1
+  rarity: MyString
+  vendor_value: 1
+  icon_file_id: MyString
+  string: MyString
+  icon_file_signature: MyString
+  default_skin: MyString
+  game_types: MyText
+  flags: MyText
+  restrictions: MyText
+  type_elements: MyText
+  crafting: MyText
