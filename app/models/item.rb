@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 		Recipe.where(recipe_no: recipe_no).first
 	end
 
-	def self.by_name(a)
+	def self.by_name(a) # uwaga na itemy o tych samych nazwach, kilka ich jest
 		self.where(name: a).first
 	end
 
@@ -14,18 +14,10 @@ class Item < ActiveRecord::Base
 		self.where(item_no: a).first
 	end
 
-	def self.consumable
-		self.where(item_type: "Consumable").to_a
-	end
+	scope :consumable, -> { where item_type: "Consumable" }
 
 	def self.food
-		food = []
-		self.consumable.select{ |i|
-			if i.type_elements != nil
-				food.push(i) if YAML::load(i.type_elements)["type"] == "Food"
-			end
-		}
-		return food
+		Item.consumable.to_a.select{ |i| i.type_elements.include?("Food")}
 	end
 
 

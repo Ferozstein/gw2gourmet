@@ -2,10 +2,12 @@ class Recipe < ActiveRecord::Base
 
 	validates :recipe_no, uniqueness: true
 
+	def self.by_no(a)
+		self.where(recipe_no: a).first
+	end
+
 	def self.chef
-		self.select{|i|
-			i.disciplines.include?("Chef")
-		}
+		self.select{ |i| i.disciplines.include?("Chef") }
 	end
 
 	def get_output
