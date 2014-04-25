@@ -1,18 +1,13 @@
-# Jak resetować tabelę przy generowaniu nowego seeda tak żeby
-# np. id zaczynały się za każdym razem od 1:
-# używać gemu DatabaseCleaner, o tak:
-# 
-# DatabaseCleaner.clean_with(:truncation, :only => 'yourtablename')
-# (zresetowanie jednej tabeli);
-# DatabaseCleaner.clean_with(:truncation, :only => ['table1', 'table2', 'table3'])
-# (kilku tabel), albo:
-# DatabaseCleaner.clean_with(:truncation)
-# (lecimy po całości - i tego będę domyślnie tu używał).
-
 require 'yaml'
 require 'timeout'
 
 counter = 0
+
+# Wszystko dalej jest wykomentowane, żeby nie odpalić tego przez pomyłkę wpisując
+# rake db:seed zamiast migracji. Każda z poniższych operacji zajmuje kilka(naście)
+# godzin. Zostały już raz puszczone, dane są w bazie i lepiej tego nie powtarzać
+# bez wyraźnej potrzeby.
+
 
 #pobranie przepisów do bazy z API
 =begin
@@ -34,9 +29,9 @@ przepisy = Timeout::timeout(30) {
 		a = YAML::load(gw2.recipe_details(i))
 		#if a["disciplines"].include?("Chef")
 				recipe = Recipe.new(
-				recipe_id: a["recipe_id"].to_i,
+				recipe_no: a["recipe_id"].to_i,
 				recipe_type: a["type"],
-				output_item_id: a["output_item_id"].to_i,
+				output_item_no: a["output_item_id"].to_i,
 				output_item_count: a["output_item_count"].to_i,
 				min_rating: a["min_rating"].to_i,
 				time_to_craft_ms: a["time_to_craft_ms"].to_i,
@@ -95,7 +90,7 @@ ItemString.find_each do |i|
 	stats = YAML::load(i.contents)
 	
 	item = Item.new(
-		item_id: stats["item_id"].to_i,
+		item_no: stats["item_id"].to_i,
 		name: stats["name"],
 		item_type: stats["type"],
 		level: stats["level"].to_i,
@@ -130,16 +125,17 @@ end
 # dopisuje do itemów dane o przepisach na nie i o byciu składnikami oraz numery
 # przepisów, w których występują jako składniki (w polu crafting, jako tablica)
 
+=begin
 Recipe.find_each do |przepis|
-	out_item = Item.where(item_id: przepis.output_item_id).first
-	out_item.recipe = przepis.recipe_id
+	out_item = Item.where(item_no: przepis.output_item_no).first
+	out_item.recipe_no = przepis.recipe_no
 	out_item.save
 
 	ing = YAML::load(przepis.ingredients)
 	disc = YAML::load(przepis.disciplines)
 	
 	ing.each do |skladnik|
-		s = Item.where(item_id: skladnik["item_id"]).first
+		s = Item.where(item_no: skladnik["item_id"]).first
 		if s.craft_mat == nil
 			craft = {}
 			disc.each do |dyscyplina|
@@ -160,12 +156,15 @@ Recipe.find_each do |przepis|
 		s.craft_mat = YAML::dump(craft)
 
 		if s.crafting.nil?
-			s.crafting = YAML::dump([przepis.recipe_id])
+			s.crafting = YAML::dump([przepis.recipe_no])
 		else
 			crafting = YAML::load(s.crafting)
-			crafting.push przepis.recipe_id
+			crafting.push przepis.recipe_no
 			s.crafting = YAML::dump(crafting)
 		end
 		s.save
 	end
+	counter += 1
+	puts "#{counter} recipes processed."
 end
+=end
