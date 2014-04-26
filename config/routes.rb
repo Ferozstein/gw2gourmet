@@ -1,5 +1,9 @@
 Gw2gourmet::Application.routes.draw do
+  get "items/search"
+  get "items/search_results"
+  get "items/:id" => 'items#show'
   get "home/index"
+
   devise_for :users
 
   root 'home#index'

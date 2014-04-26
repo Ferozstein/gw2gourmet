@@ -18,9 +18,19 @@ class Recipe < ActiveRecord::Base
 		ing = YAML::load(ingredients)
 		lista = []
 		ing.each do |i|
-			lista.push(Item.where(item_no: i["item_id"]).first)
+			lista.push({item: Item.by_no(i["item_id"]), number: i["count"]})
 		end
 		return lista
+	end
+
+	def get_disciplines
+		disc = []
+		YAML::load(disciplines).each do |i|
+			disc.push("#{i} (#{min_rating})")
+		end
+		disc = disc.to_s.delete("[]\"")
+		disc[","] = " or" unless !disc.include?(",")
+		disc
 	end
 
 	def get_recipe_item

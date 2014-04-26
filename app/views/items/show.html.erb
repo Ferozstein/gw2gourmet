@@ -1,0 +1,48 @@
+<%= render 'home/header' %>
+<h2><%= @item.name %></h2>
+<hr>
+<div class="item_result" style="float:left;width:480px;padding:15px;margin:0px 10px 10px 0px;font-size:10pt;">
+	<div class="item_image" style="float:left;">
+	<% img_url = "https://render.guildwars2.com/file/#{@item.icon_file_signature}/#{@item.icon_file_id}.jpg" %>
+		<%= image_tag(img_url) %>
+	</div>
+	<% unless @item.type_elements.nil? %>
+	<div class="item_result_details" style="margin-left:10px;float:left;width:380px;">
+		<% desc = YAML::load(@item.type_elements)["description"].split("\n") %>
+		<% desc.each do |d| %>
+		<%= d %><br />
+		<% end %>
+		Duration: <%= YAML::load(@item.type_elements)["duration_ms"].to_i / 60000 %> minutes<br />
+		Minimum level: <%= @item.level %>
+	</div>
+	<% end %>
+</div>
+<% unless @item.craft_mat.nil? %>
+	<p><b>Crafting ingredient:</b> <%= @item.get_disciplines %></p>
+<% end %>
+
+<% unless @item.recipe_no.nil? %>
+	<h3>Recipe (required <%= @item.get_recipe.get_disciplines %>):</h3>
+	<% @item.get_recipe.get_ingredients.each do |i| %>
+
+<div class="item_result" style="float:left; border:1px solid gray;width:220px;padding:15px;margin:0px 10px 10px 0px;font-size:10pt;">
+	<div class="item_image" style="float:left;">
+	<% img_url = "https://render.guildwars2.com/file/#{i[:item].icon_file_signature}/#{i[:item].icon_file_id}.jpg" %>
+		<%= image_tag(img_url) %>
+	</div>
+	<div class="item_result_details" style="margin-left:10px;float:left;width:145px;">
+		<b><%= i[:number] %>x <%= link_to(i[:item].name, "#{i[:item].item_no}") %></b><br />
+	</div>
+</div>
+<% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+<%= render 'home/footer' %>

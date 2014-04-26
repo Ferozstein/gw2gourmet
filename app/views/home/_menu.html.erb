@@ -1,1 +1,13 @@
-<span style="padding-top:5px;">Tu będzie menu strony.</span>
+<%= link_to "Home", root_path  %>
+<%= link_to "Food search", items_search_path  %>
+<%= link_to "Recipe search", root_path  %>
+
+<div id="menu-login">
+	<% if user_signed_in? %>
+		<%= link_to "Edit account", edit_user_registration_path  %>
+        <%= link_to "Logout", destroy_user_session_path, :method => 'delete'  %>
+    <% else %>
+        <%= link_to "Login", new_user_session_path  %>
+        <%= link_to "Sign up", new_user_registration_path  %>
+	<% end %>
+</div>
