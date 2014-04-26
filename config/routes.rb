@@ -1,4 +1,7 @@
 Gw2gourmet::Application.routes.draw do
+  get "comments/create"
+  get "comments/edit"
+  get "comments/delete"
   get "items/search"
   get "items/search_results"
   get "items/:id" => 'items#show'
