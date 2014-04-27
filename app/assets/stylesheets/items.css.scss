@@ -1,3 +1,54 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item_data {
+	float: left;
+	width: 530px;
+}
+
+.item_result {
+	float: left;
+	width: 480px;
+	padding: 15px;
+	margin: 0px 10px 10px 0px;
+	font-size: 10pt;
+}
+
+.item_image {
+	float:left;
+}
+
+.item_result_details {
+	margin-left: 10px;
+	float: left;
+	width: 380px;
+}
+
+.recipe_ingredients {
+	float: left;
+	width: 300px;
+	padding: 0px 15px;
+	font-size: 10pt;
+
+}
+
+.recipe_item_result {
+	float: left;
+	width: 300px;
+}
+
+.recipe_item_image {
+	float: left;
+}
+
+.recipe_item_image img {
+	height: 32px;
+}
+
+.recipe_item_details {
+	margin-left: 10px;
+	float: left;
+	padding-top: 8px;
+	width: 240px;
+}

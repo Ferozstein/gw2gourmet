@@ -1,3 +1,41 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment_container {
+	width: 530px;
+	float: left;
+}
+
+.comment {
+	float: left;
+	margin-bottom: 15px;
+}
+
+.comment_titlebar {
+	color: gray;
+	float: left;
+	margin-left: 15px;
+}
+
+.comment_body {
+	width: 480px;
+	float: left;
+	border: 1px solid #d1d1d1;
+	margin-left: 15px;
+	padding: 10px;
+	-moz-border-radius: 5px; /* Firefox */ 
+    -webkit-border-radius: 5px; /* Safari, Chrome */ 
+    border-radius: 5px; /* CSS3 */ 
+}
+
+.comment_add {
+	width: 480px;
+	float: left;
+	margin: 0px 0px 15px 15px;
+}
+
+.comment_add textarea {
+	resize: none;
+	width: 497px;
+}

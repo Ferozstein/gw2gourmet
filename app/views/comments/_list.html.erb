@@ -1,0 +1,49 @@
+<div class="comment_container">
+	<h3>Comments (<%= @comments.count %>):</h3>
+	<hr>
+	
+	<% @comments.each do |c| %>
+
+		<div class="comment">
+
+			<div class="comment_titlebar">
+				<% email = c.user.email %>
+				<% email["@"] = "(at)" if email.include?("@") %>
+
+				<%= "#{email} posted on #{c.created_at.to_s}" %>
+			</div>
+
+			<div class="comment_body">
+
+				<%= c.body %>
+
+			</div>
+		</div>
+
+
+	<% end %>
+
+	<% if user_signed_in? %>
+
+		<div class="comment_add">
+
+			<%= form_tag(comments_add_path, method:"post") do %>
+
+				<%= hidden_field_tag :user_id, current_user.id %>
+				<%= hidden_field_tag :item_id, @item.id %>
+				
+				<%= text_area_tag(:body, "Add your comment here!", options = {rows: "3", style: ""}) %><br />
+
+				<%= submit_tag("Post comment") %>
+
+			<% end %>
+
+		</div>
+
+	<% else %>
+
+		<h3>Please log in to comment.</h3>
+
+	<% end %>
+
+</div>
