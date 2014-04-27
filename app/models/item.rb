@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
 	validates :item_no, uniqueness: true
 
 	has_many :votes
+	has_many :comments
 
 	def get_recipe
 		Recipe.where(recipe_no: recipe_no).first

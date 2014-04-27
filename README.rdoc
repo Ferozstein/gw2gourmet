@@ -1,28 +1,72 @@
-== README
+== README - GW2 Gourmet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+© 2014 Mikołaj Kamiński
 
-Things you may want to cover:
+This is a Guild Wars 2 fan application. Obligatory legal notice follows:
 
-* Ruby version
+--------------------------------------------------------------------------
 
-* System dependencies
+© 2014 ArenaNet, LLC. All rights reserved. NCSOFT, the interlocking NC 
+logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars Nightfall, 
+Guild Wars: Eye of the North, Guild Wars 2, and all associated logos and 
+designs are trademarks or registered trademarks of NCSOFT Corporation. All 
+other trademarks are the property of their respective owners.
 
-* Configuration
+--------------------------------------------------------------------------
 
-* Database creation
+With that out of the way, here's what this app is supposed to do.
 
-* Database initialization
+a) search the item database (obtained from the GW2 API) and return food
+   items that fit the criteria; this was the first and main purpose of
+   my app as I couldn't find a site with a convenient consumable search
+   engine;
+b) help with discovering new recipes by listing all recipes using a given
+   ingredient, with ability to switch back and forth between the recipe
+   list and specific items' details;
+c) provide details on foodstuffs and ingredients; currently only provides
+   stat boost and recipe data; prices, drop info, vendor locations and so
+   on are planned for subsequent updates.
+d) allow for item commenting and rating by users.
 
-* How to run the test suite
+Some more features I want to add sooner or later (preferably sooner), in 
+no particular order:
 
-* Services (job queues, cache servers, search engines, etc.)
+a) GW2Spidy API integration - up-to-date prices for everything. 'Nuff said.
+b) 0-400 Chef leveling guides, including the cheapest possible guide
+   dynamically generated based on GW2Spidy price data and the "discover-
+   -only" guide where crafting experience is earned (almost) solely by 
+   way of discovering new recipes.
+c) inclusion of consumables from other crafting disciplines - Maintenance
+   Oils, Sharpening Stones, potions and so on. Also vendor-only 
+   consumables.
+d) a huge code rewrite, to turn the rushed and inelegant hack job this app
+   unfortunately is into something that hopefully won't give another
+   programmer a heart attack upon a peek under the hood. Should also run
+   faster afterwards.
+e) information on where and how to get each and every item (and how much),
+   with particular focus on consumables, ingredients and recipe unlocks.
+f) recipe checklists linked to the user account, for the completists who
+   just have to unlock everything there is to unlock.
 
-* Deployment instructions
+--------------------------------------------------------------------------
 
-* ...
+Regarding Ruby and Rails versions, system requirements, database creation,
+etc. stuff which should appear in the readme file:
 
+This app was created as a course project for the purpose of learning Ruby
+on Rails. It's also meant to showcase my Rails skills for potential
+employers. What it's not meant for by any means, is for cloning and
+developing further on your own; that's also why there is no license
+attached.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+GW2 Gourmet utilizes the full Guild Wars 2 item database obtained from
+the game's API. It's absolutely huge, just seeding the db with all this 
+data took about 35-40 hours. If you do not REALLY need to mirror this site 
+(as it will be soon deployed to a regular web server), do not try this at 
+home. Take my word for it, it's not really that much fun. At all.
+
+To sum it all up, this repository is provided solely for evaluation
+purposes. If you want to actually use the app (hey, great! Mission
+accomplished!), you'll be much better off waiting until I bring it online
+(which will most likely be the time this repo goes private for security
+reasons anyway).

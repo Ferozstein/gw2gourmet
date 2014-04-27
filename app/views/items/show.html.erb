@@ -23,18 +23,20 @@
 
 <% unless @item.recipe_no.nil? %>
 	<h3>Recipe (required <%= @item.get_recipe.get_disciplines %>):</h3>
+	<div class="recipe_ingredients" style="float:left; border:1px solid gray; width:300px; padding:15px; font-size:10pt;margin-bottom:15px;">
 	<% @item.get_recipe.get_ingredients.each do |i| %>
 
-<div class="item_result" style="float:left; border:1px solid gray;width:220px;padding:15px;margin:0px 10px 10px 0px;font-size:10pt;">
+<div class="item_result" style="float:left; width:300px;">
 	<div class="item_image" style="float:left;">
 	<% img_url = "https://render.guildwars2.com/file/#{i[:item].icon_file_signature}/#{i[:item].icon_file_id}.jpg" %>
-		<%= image_tag(img_url) %>
+		<%= image_tag(img_url, style:"height:32px;") %>
 	</div>
-	<div class="item_result_details" style="margin-left:10px;float:left;width:145px;">
+	<div class="item_result_details" style="margin-left:10px;float:left;padding-top:8px;width:240px;">
 		<b><%= i[:number] %>x <%= link_to(i[:item].name, "#{i[:item].item_no}") %></b><br />
 	</div>
 </div>
 <% end %>
+</div>
 <% end %>
 
 
