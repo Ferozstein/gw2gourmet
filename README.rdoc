@@ -16,36 +16,36 @@ other trademarks are the property of their respective owners.
 
 With that out of the way, here's what this app is supposed to do.
 
-a) search the item database (obtained from the GW2 API) and return food
+1) search the item database (obtained from the GW2 API) and return food
    items that fit the criteria; this was the first and main purpose of
    my app as I couldn't find a site with a convenient consumable search
    engine;
-b) help with discovering new recipes by listing all recipes using a given
+2) help with discovering new recipes by listing all recipes using a given
    ingredient, with ability to switch back and forth between the recipe
    list and specific items' details;
-c) provide details on foodstuffs and ingredients; currently only provides
+3) provide details on foodstuffs and ingredients; currently only provides
    stat boost and recipe data; prices, drop info, vendor locations and so
    on are planned for subsequent updates.
-d) allow for item commenting and rating by users.
+4) allow for item commenting and rating by users.
 
 Some more features I want to add sooner or later (preferably sooner), in 
 no particular order:
 
-a) GW2Spidy API integration - up-to-date prices for everything. 'Nuff said.
-b) 0-400 Chef leveling guides, including the cheapest possible guide
+1) GW2Spidy API integration - up-to-date prices for everything. 'Nuff said.
+2) 0-400 Chef leveling guides, including the cheapest possible guide
    dynamically generated based on GW2Spidy price data and the "discover-
    -only" guide where crafting experience is earned (almost) solely by 
    way of discovering new recipes.
-c) inclusion of consumables from other crafting disciplines - Maintenance
+3) inclusion of consumables from other crafting disciplines - Maintenance
    Oils, Sharpening Stones, potions and so on. Also vendor-only 
    consumables.
-d) a huge code rewrite, to turn the rushed and inelegant hack job this app
+4) a huge code rewrite, to turn the rushed and inelegant hack job this app
    unfortunately is into something that hopefully won't give another
    programmer a heart attack upon a peek under the hood. Should also run
    faster afterwards.
-e) information on where and how to get each and every item (and how much),
+5) information on where and how to get each and every item (and how much),
    with particular focus on consumables, ingredients and recipe unlocks.
-f) recipe checklists linked to the user account, for the completists who
+6) recipe checklists linked to the user account, for the completists who
    just have to unlock everything there is to unlock.
 
 --------------------------------------------------------------------------
@@ -55,7 +55,7 @@ etc. stuff which should appear in the readme file:
 
 This app was created as a course project for the purpose of learning Ruby
 on Rails. It's also meant to showcase my Rails skills for potential
-employers. What it's not meant for by any means, is for cloning and
+employers. What it's NOT meant for by any means, is for cloning and
 developing further on your own; that's also why there is no license
 attached.
 
