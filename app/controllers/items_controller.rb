@@ -2,13 +2,12 @@ class ItemsController < ApplicationController
   
   before_action :find_item, :only => [:show]
 
-  def find_item
-		@item = Item.by_no(params[:id])
-  end
-
-
   def search
 
+  end
+
+  def find_item
+    @item = Item.by_no(params[:id])
   end
 
   def search_results
@@ -106,13 +105,29 @@ class ItemsController < ApplicationController
   	render 'search'
   end
 
+  def recipe
+    @ingredient_names = []
+    Item.all_ingredients.each do |i|
+      @ingredient_names.push(i.name)
+    end
+  end
+
+  def recipe_results
+    @ingredient_names = []
+    Item.all_ingredients.each do |i|
+      @ingredient_names.push(i.name)
+    end
+    @item = Item.by_name(params[:ingredient])
+    @recipes = Recipe.select{|i| i.ingredients.include?(@item.item_no.to_s)}.sort_by {|obj| obj.min_rating}.reverse
+    render 'recipe'
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
     @comments = @item.comments
   end
 
-  def recipe
-  end
+
 
 end

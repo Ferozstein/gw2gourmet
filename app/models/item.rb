@@ -5,6 +5,10 @@ class Item < ActiveRecord::Base
 	has_many :votes
 	has_many :comments
 
+	scope :consumable, -> { where item_type: "Consumable" }
+ 	scope :all_ingredients, -> { Item.select{|i| [(i.crafting != nil), (i.craft_mat !=nil)].all?}.select{|i| i.craft_mat.include?("Chef")}.sort_by {|obj| obj.name} }
+ 	scope :food, -> { Item.consumable.to_a.select{ |i| i.type_elements.include?("Food")} }
+
 	def get_recipe
 		Recipe.where(recipe_no: recipe_no).first
 	end
@@ -17,11 +21,9 @@ class Item < ActiveRecord::Base
 		self.where(item_no: a).first
 	end
 
-	scope :consumable, -> { where item_type: "Consumable" }
-
-	def self.food
-		Item.consumable.to_a.select{ |i| i.type_elements.include?("Food")}
-	end
+  	def find_item
+		@item = Item.by_no(params[:id])
+  	end
 
 	def get_disciplines
 		disc = []

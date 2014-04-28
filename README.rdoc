@@ -26,7 +26,7 @@ With that out of the way, here's what this app is supposed to do.
 3) provide details on foodstuffs and ingredients; currently only provides
    stat boost and recipe data; prices, drop info, vendor locations and so
    on are planned for subsequent updates.
-4) allow for item commenting and rating by users.
+4) allow for item commenting by users.
 
 Some more features I want to add sooner or later (preferably sooner), in 
 no particular order:
@@ -47,6 +47,7 @@ no particular order:
    with particular focus on consumables, ingredients and recipe unlocks.
 6) recipe checklists linked to the user account, for the completists who
    just have to unlock everything there is to unlock.
+7) ability to rate items and display toplists.
 
 --------------------------------------------------------------------------
 
