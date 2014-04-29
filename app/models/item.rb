@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
 	has_many :votes
 	has_many :comments
 
+	belongs_to :recipe
+
 	scope :consumable, -> { where item_type: "Consumable" }
  	scope :all_ingredients, -> { Item.select{|i| [(i.crafting != nil), (i.craft_mat !=nil)].all?}.select{|i| i.craft_mat.include?("Chef")}.sort_by {|obj| obj.name} }
  	scope :food, -> { Item.consumable.to_a.select{ |i| i.type_elements.include?("Food")} }
